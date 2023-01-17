@@ -29,7 +29,7 @@ const paddleHeight = grid * 5;
 let ScoreL, ScoreR, nickNameL, nickNameR;
 let ball, rightPaddle,
     leftPaddle,
-    maxPaddleY, paddleSpeed = 7, ballSpeed = 4.5;
+    maxPaddleY, paddleSpeed = 7, ballSpeed = 5;
 let fieldWidth, fieldHeight;
 const arr = [1, -1];
 

@@ -1,7 +1,7 @@
 let button = document.getElementById('sendButton');
 let rightScore = document.getElementById('right');
 let leftScore = document.getElementById('left');
-let leftScoreD = 0, rightScoreD = 0;
+let leftScoreD = 0, rightScoreD = 0, t = 0;
 let canvas,
     ball = {}, rightPaddle = {},
     leftPaddle = {}, ctx,
@@ -104,6 +104,9 @@ socket.onerror = function(error) {
     console.log(`[error]`, error);
 };
 
+/*setInterval(() => {
+    console.log(socket.bufferedAmount);
+}, 50);*/
 /*---------------------SOCKET_SECTION---------------------*/
 function gameInit(fieldWidth, fieldHeight, gridInf) {
     let initData = {};
@@ -139,8 +142,12 @@ window.onload = () => {
     canvas.id = 'gameField';
     if(canvas.getContext) ctx = canvas.getContext('2d');
 
+    /*maxPaddleY = canvas.height - grid - paddleHeight;//максимальное расстояние платформы*/
+    t = 5;
+    while (socket.readyState === 0) {
+        t += 1;
+    }
     gameInit(canvas.width, canvas.height, grid)
-
     ctx.fillStyle = `rgb(57, 98, 29)`;
     ctx.fillRect (0, 0, canvas.width, canvas.height);
     ctx.strokeStyle = 'rgb(154,154,154)';
